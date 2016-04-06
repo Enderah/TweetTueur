@@ -1,0 +1,14 @@
+TweetTueur :
+
+    C'est quoi ?
+
+        Une interface qui affiche en temps réel les tweets
+        et qui permet aux joueurs de les détruire pour marquer des points.
+
+    Comment l'utiliser ?
+
+        Lancez le serveur avec node :
+            node server.js
+
+        Lancer votre navigateur préféré et allez à l'adresse
+            127.0.0.1:1337
