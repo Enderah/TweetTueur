@@ -7,10 +7,8 @@ var hashtag = ""
 fs.readFile(__dirname  + "/server.conf", function(error, data) {
   if (error) 
     console.log("pas de fichier de configuration")
-  else {
+  else
     hashtag = data.toString()
-    console.log(hashtag)
-  }
 })
 
 /*
@@ -54,6 +52,10 @@ var server = http.createServer(function(request, response) {
     sendResponse(path, "application/javascript", false)
   else if (path == "/client/js/pixi.min.js.map")
     sendResponse(path, "application/javascript", false)
+  else if (path == "/client/assets/SpriteSheet.json")
+    sendResponse(path, "application/javascript", false)
+  else if (path == "/client/assets/SpriteSheet.png")
+    sendResponse(path, "image/png", false)
   else if (path == "/client/js/index.js")
     sendResponse(path, "application/javascript", false)
   else
