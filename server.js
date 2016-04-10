@@ -85,10 +85,6 @@ fs.readFile(__dirname  + "/config", function(error, data) {
         t.on('tweet', function (tweet) {
           socket.emit('tweet', tweet)
         })
-
-        //socket.on('pouet', function (data) {
-          //console.log(data);
-        //})
       });
     }
     catch (e)
