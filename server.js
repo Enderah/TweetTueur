@@ -61,19 +61,39 @@ server.listen(1337);
 
 
 /*
- * Partie socket du serveur
+ * Partie socket/twitter du serveur
  */
 
 
-var io = require('socket.io')(server);
+var Twitter = require('node-tweet-stream')
+fs.readFile(__dirname  + "/config", function(error, data) {
+  if (error)
+    console.log("pas de fichier de configuration");
+  else {
+    try {
+      var t = new Twitter(JSON.parse(data.toString()))
 
-io.on('connection', function(socket) { 
-  socket.on('pouet', function(data) {
-    console.log(data);
-  })
-  socket.emit('pouet', {pouet: 'toto'}) 
-});
+      t.on('error', function (err) {
+        console.log(err)
+      })
+      t.track(hashtag)
 
-/*
- * TODO: Remplacer les types de message par des noms corrects et envoyer l'objet "tweet" au client
- */
+      var io = require('socket.io')(server);
+
+      io.on('connection', function (socket) {
+
+        t.on('tweet', function (tweet) {
+          socket.emit('tweet', tweet)
+        })
+
+        //socket.on('pouet', function (data) {
+          //console.log(data);
+        //})
+      });
+    }
+    catch (e)
+    {
+      console.log("could not connect to twitter")
+    }
+  }
+})

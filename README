@@ -7,8 +7,19 @@ TweetTueur :
 
     Comment l'utiliser ?
 
-        Lancez le serveur avec node :
-            node server.js
+    Lancez le serveur avec node :
+        node server.js
 
-        Lancer votre navigateur préféré et allez à l'adresse
-            127.0.0.1:1337
+    Lancer votre navigateur préféré et allez à l'adresse
+        127.0.0.1:1337
+
+    Prérequis :
+        npm install socket.io
+        npm install node-tweet-stream
+        créer un fichier "config" contenant vos identifiants twitter :
+        {
+            consumer_key: '',
+            consumer_secret: '',
+            token: '',
+            token_secret: ''
+          }
